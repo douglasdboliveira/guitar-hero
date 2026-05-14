@@ -1,7 +1,9 @@
 let c = document.getElementById("myCanvas");
 let ctx = c.getContext("2d");
 
-const salomao = new Audio('final.mp3');
+const salomao = new Audio('baseado.mp3');
+const hino = new Audio('hino-sv.mp3');
+const pedro = new Audio('pedro.mp3');
 const image = document.getElementById("fogo");
 
 let mostrarFogoBotaoVerde = false;
@@ -63,7 +65,10 @@ let avisar = function() {
     ctx.fillStyle = "white";
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
-    ctx.fillText("Pressione ESPAÇO para começar", 170, 340);
+    ctx.fillText("Escolha a canção: ", 170, 280);
+    ctx.fillText("1: Salomão - Baseado Em Quê?", 170, 320);
+    ctx.fillText("2: Hino de São Vicente", 170, 360);
+    ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 400);
 }
 
 function criarNota(x, cor) {
@@ -119,13 +124,43 @@ let desenharNotas = function() {
     requestAnimationFrame(desenharNotas);
 }
 
+function tocarNotasHinoSV() {
+    for (let i = 0; i < 2000; i += 500) {
+        setTimeout(() => criarNota(xLinha, "green"), i);
+    }
+    for (let i = 2000; i < 4000; i += 500) {
+        setTimeout(() => criarNota(xLinha + divisao, "red"), i);
+    }
+    for (let i = 4000; i < 6000; i += 500) {
+        setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), i);
+    }
+    for (let i = 6000; i < 8000; i += 500) {
+        setTimeout(() => criarNota(xLinha + divisao, "red"), i);
+    }
+}
+
+function tocarNotasPedro() {
+    for(let i = 0; i < 2000; i+=1000) {
+        setTimeout(() => criarNota(xLinha, "green"), i);
+    }
+    for(let i = 1500; i < 3500; i+=1000) {
+        setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), i);
+    }
+    for(let i = 3000; i < 5000; i+=1000) {
+        setTimeout(() => criarNota(xLinha + divisao, "red"), i);
+    }
+    for(let i = 4500; i < 6500; i+=1000) {
+        setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), i);
+    }
+}
+
 let jaTocou = false;
 let pontuacao = 0;
 
 avisar();
 
 document.addEventListener("keydown", function(event) {
-  if (event.code === "Space" && !jaTocou) {
+  if (event.code === "Numpad1" || event.code === "Digit1" && !jaTocou) { // Baseado Em Quê
     salomao.play().catch(error => {
       console.log("O navegador bloqueou a reprodução automática:", error);
     });
@@ -142,6 +177,34 @@ document.addEventListener("keydown", function(event) {
     for(let i = 4000; i < 1000000; i+=8000) {
         setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), i);
     }
+  }
+
+  if (event.code === "Numpad2" || event.code === "Digit2" && !jaTocou) { // Hino de São Vicente
+    hino.play().catch(error => {
+      console.log("O navegador bloqueou a reprodução automática:", error);
+    });
+
+    jaTocou = true;
+    desenharNotas();
+
+    // Executa imediatamente
+    tocarNotasHinoSV();
+        
+    setInterval(tocarNotasHinoSV, 8000);
+  }
+
+  if (event.code === "Numpad3" || event.code === "Digit3" && !jaTocou) { // Meu Amigo Pedro
+    pedro.play().catch(error => {
+      console.log("O navegador bloqueou a reprodução automática:", error);
+    });
+
+    jaTocou = true;
+    desenharNotas();
+    
+    // Executa imediatamente
+    tocarNotasPedro();
+    
+    setInterval(tocarNotasPedro, 6500);
   }
 
   if (event.code === "KeyA") {
