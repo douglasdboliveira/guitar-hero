@@ -6,6 +6,24 @@ const hino = new Audio('hino-sv.mp3');
 const pedro = new Audio('pedro.mp3');
 const image = document.getElementById("fogo");
 
+// Controle de volume
+const volumeControl = document.getElementById("volumeControl");
+const volumeValue = document.getElementById("volumeValue");
+
+// Sincronizar volume inicial
+salomao.volume = 0.5;
+hino.volume = 0.5;
+pedro.volume = 0.5;
+
+// Atualizar volume quando o controle mudar
+volumeControl.addEventListener("input", function() {
+    const volume = this.value / 100;
+    salomao.volume = volume;
+    hino.volume = volume;
+    pedro.volume = volume;
+    volumeValue.innerText = this.value + "%";
+});
+
 let mostrarFogoBotaoVerde = false;
 let mostrarFogoBotaoVermelho = false;
 let mostrarFogoBotaoAmarelo = false;
@@ -61,14 +79,16 @@ let desenharBotao = function(x, y, cor) {
 }
 
 let avisar = function() {
-    ctx.font = "20px Arial";
-    ctx.fillStyle = "white";
+    ctx.font = "bold 16px Arial";
+    ctx.fillStyle = "#00ff41";
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
-    ctx.fillText("Escolha a canção: ", 170, 280);
-    ctx.fillText("1: Salomão - Baseado Em Quê?", 170, 320);
-    ctx.fillText("2: Hino de São Vicente", 170, 360);
-    ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 400);
+    ctx.shadowColor = "rgba(0, 255, 65, 0.5)";
+    ctx.shadowBlur = 10;
+    ctx.fillText("SELECT A SONG", 170, 280);
+    ctx.fillText("1: Salomão - Baseado Em Quê?", 170, 330);
+    ctx.fillText("2: Hino de São Vicente", 170, 370);
+    ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 410);
 }
 
 function criarNota(x, cor) {
@@ -103,7 +123,7 @@ let desenharNotas = function() {
 
         // remove e toma dano se sair da tela
         if (nota.y > c.height + 20) {
-            document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao -= 10);
+            document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao -= 10);
             notas.splice(i, 1);
             i--;
         }
@@ -160,7 +180,7 @@ let pontuacao = 0;
 avisar();
 
 document.addEventListener("keydown", function(event) {
-  if (event.code === "Numpad1" || event.code === "Digit1" && !jaTocou) { // Baseado Em Quê
+  if (event.code === "Numpad1" || event.code === "Digit1" && !jaTocou) { 
     salomao.play().catch(error => {
       console.log("O navegador bloqueou a reprodução automática:", error);
     });
@@ -187,7 +207,7 @@ document.addEventListener("keydown", function(event) {
     jaTocou = true;
     desenharNotas();
 
-    // Executa imediatamente
+    
     tocarNotasHinoSV();
         
     setInterval(tocarNotasHinoSV, 8000);
@@ -201,7 +221,7 @@ document.addEventListener("keydown", function(event) {
     jaTocou = true;
     desenharNotas();
     
-    // Executa imediatamente
+    
     tocarNotasPedro();
     
     setInterval(tocarNotasPedro, 6500);
@@ -210,43 +230,44 @@ document.addEventListener("keydown", function(event) {
   if (event.code === "KeyA") {
     console.log("Tecla A foi pressionada")
     if(notas[0].y < 700) {
-        document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao -= 20);
+        document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao -= 20);
     }
     else if(notas[0].cor == 'green' && notas[0].y >= 700 && notas[0].y <= 740) {
         mostrarFogoBotaoVerde = true;
         setTimeout(() => {
             mostrarFogoBotaoVerde = false;
         }, 150);
-        document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao += 20);
+        document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao += 20);
         notas.splice(0, 1);
     }
   }
   if (event.code === "KeyS") {
     console.log("Tecla S foi pressionada")
     if(notas[0].y < 700) {
-        document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao -= 20);
+        document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao -= 20);
     }
     else if(notas[0].cor == 'red' && notas[0].y >= 700 && notas[0].y <= 740) {
         mostrarFogoBotaoVermelho = true;
         setTimeout(() => {
             mostrarFogoBotaoVermelho = false;
         }, 150);
-        document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao += 20);
+        document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao += 20);
         notas.splice(0, 1);
     }
   }
   if (event.code === "KeyJ") {
     console.log("Tecla J foi pressionada")
     if(notas[0].y < 700) {
-        document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao -= 20);
+        document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao -= 20);
     }
     else if(notas[0].cor == 'yellow' && notas[0].y >= 700 && notas[0].y <= 740) {
         mostrarFogoBotaoAmarelo = true;
         setTimeout(() => {
             mostrarFogoBotaoAmarelo = false;
         }, 150);
-        document.getElementById("pontuacao").innerText = "Pontuação: " + (pontuacao += 20);
+        document.getElementById("pontuacao").innerText = "SCORE: " + (pontuacao += 20);
         notas.splice(0, 1);
     }
   }
+
 });
