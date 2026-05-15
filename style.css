@@ -4,7 +4,10 @@ body {
     background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%);
     font-family: 'Arial', 'Courier New', monospace;
     color: #00ff41;
-    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
 footer {
@@ -17,6 +20,7 @@ footer {
     bottom: 0;
     width: 100%;
     opacity: 0.6;
+    margin-top: auto;
 }
 
 input[type="range"] {
