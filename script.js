@@ -100,25 +100,19 @@ function avisar() {
 
     ctx.fillStyle = "#00d9ff";
     ctx.fillText("FÁCIL", 170, 300);  
-
-    ctx.fillStyle = "#00ff41"; 
     ctx.fillText("1: Salomão - Baseado Em Quê?", 170, 330);
     ctx.fillText("2: Hino de São Vicente", 170, 360);
 
     ctx.fillStyle = "#ffe600";
     ctx.fillText("MÉDIO", 170, 420);
-
-    ctx.fillStyle = "#00ff41";
     ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 450);
 
     
     ctx.fillStyle = "#ff3131";
     ctx.fillText("DIFÍCIL", 170, 510);
-
-    ctx.fillStyle = "#00ff41";
     ctx.fillText("4: Shake It Off - Taylor Swift", 170, 540);
     ctx.fillText("5: Slow Ride - Foghat", 170, 570);
-    ctx.shadowBlur = 0;
+    ctx.shadowBlur = 5;
 }
 
 function desenharQuadro() {
