@@ -96,7 +96,7 @@ function avisar() {
     ctx.shadowColor = "rgba(0,255,65,0.5)";
     ctx.shadowBlur = 10;
 
-    ctx.fillText("SELECIONE A MÚSICA", 170, 250);
+    ctx.fillText("SELECIONE A MÚSICA", 170, 200);
 
     ctx.fillStyle = "#00d9ff";
     ctx.fillText("FÁCIL", 170, 250);  
