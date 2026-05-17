@@ -13,7 +13,11 @@ const volumeControl = document.getElementById("volumeControl");
 const volumeValue = document.getElementById("volumeValue");
 
 const musicas = [salomao, hino, pedro, shake_it_off, slow_ride];
-
+const dificuldadeMusicas = {
+    facil: [1, 2],
+    medio: [3],
+    dificil: [4, 5]
+};
 musicas.forEach(musica => musica.volume = 0.5);
 
 volumeControl.addEventListener("input", function () {
@@ -93,12 +97,14 @@ function avisar() {
     ctx.shadowBlur = 10;
 
     ctx.fillText("SELECT A SONG", 170, 280);
-    ctx.fillText("1: Salomão - Baseado Em Quê?", 170, 320);
+    ctx.fillText("FÁCIL", 170, 300);
+    ctx.fillText("1: Salomão - Baseado Em Quê?", 170, 330);
     ctx.fillText("2: Hino de São Vicente", 170, 360);
-    ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 400);
-    ctx.fillText("4: Shake It Off - Taylor Swift", 170, 440);
-    ctx.fillText("5: Slow Ride - Foghat", 170, 480);
-
+    ctx.fillText("MÉDIO", 170, 420);
+    ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 450);
+    ctx.fillText("DIFÍCIL", 170, 510);
+    ctx.fillText("4: Shake It Off - Taylor Swift", 170, 540);
+    ctx.fillText("5: Slow Ride - Foghat", 170, 570);
     ctx.shadowBlur = 0;
 }
 
