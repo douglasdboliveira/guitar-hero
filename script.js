@@ -37,6 +37,7 @@ let mostrarFogoBotaoAmarelo = false;
 let xLinha = 50;
 let divisao = 60;
 
+
 let notas = [];
 let jaTocou = false;
 let pontuacao = 0;
