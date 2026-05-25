@@ -1,8 +1,8 @@
-const salomao = new Audio("baseado.mp3");
-const hino = new Audio("hino-sv.mp3");
-const pedro = new Audio("pedro.mp3");
-const shake_it_off = new Audio("shake_it_off.mp3");
-const slow_ride = new Audio("slow_ride.mp3");
+const salomao = new Audio("./assets/baseado.mp3");
+const hino = new Audio("./assets/hino-sv.mp3");
+const pedro = new Audio("./assets/pedro.mp3");
+const shake_it_off = new Audio("./assets/shake_it_off.mp3");
+const slow_ride = new Audio("./assets/slow_ride.mp3");
 
 export const musicas = [salomao, hino, pedro, shake_it_off, slow_ride];
 
