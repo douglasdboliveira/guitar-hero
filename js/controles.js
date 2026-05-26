@@ -157,15 +157,56 @@ export function configurarTeclado(ctx, c, image, fogoFlags, xLinha, divisao) {
             setInterval(tocarNotasSlowRide, 4200);
         }
 
+        // Justin Bieber
+        if ((event.code === "Digit6" || event.code === "Numpad6") && !jaTocou) {
+            musicas[5].play();
+            jaTocou = true;
+            desenharNotas(ctx, c, image, fogoFlags, xLinha, divisao);
+
+            function tocarNotasJustin() {
+                // Compasso 1 - sequência acelerada
+                setTimeout(() => criarNota(xLinha, "green"), 0);
+                setTimeout(() => criarNota(xLinha + divisao, "red"), 400);
+                setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), 800);
+                setTimeout(() => criarNota(xLinha + divisao * 3, "blue"), 1200);
+
+                // Compasso 2 - síncope moderada
+                setTimeout(() => criarNota(xLinha, "green"), 1700);
+                setTimeout(() => criarNota(xLinha + divisao, "red"), 2200);
+                setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), 2600);
+                setTimeout(() => criarNota(xLinha + divisao * 3, "blue"), 3000);
+
+                // Compasso 3 - descida rápida
+                setTimeout(() => criarNota(xLinha + divisao * 3, "blue"), 3500);
+                setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), 3900);
+                setTimeout(() => criarNota(xLinha + divisao, "red"), 4300);
+                setTimeout(() => criarNota(xLinha, "green"), 4700);
+
+                // Compasso 4 - fechamento com acento duplo
+                setTimeout(() => criarNota(xLinha, "green"), 5200);
+                setTimeout(() => criarNota(xLinha + divisao, "red"), 5600);
+                setTimeout(() => criarNota(xLinha + divisao * 2, "yellow"), 6000);
+                setTimeout(() => criarNota(xLinha + divisao * 3, "blue"), 6400);
+                setTimeout(() => criarNota(xLinha, "green"), 6800);
+            }
+
+            // Executa a sequência e repete em loop
+            tocarNotasJustin();
+            setInterval(tocarNotasJustin, 7200);
+        }
+
         // Acertos de notas
         if (event.code === "KeyA") {
-            verificarNota("green", fogoFlags, "verde");
+            verificarNota("green", fogoFlags, "green");
         }
         if (event.code === "KeyS") {
-            verificarNota("red", fogoFlags, "vermelho");
+            verificarNota("red", fogoFlags, "red");
         }
         if (event.code === "KeyJ") {
-            verificarNota("yellow", fogoFlags, "amarelo");
+            verificarNota("yellow", fogoFlags, "yellow");
+        }
+        if (event.code === "KeyK") {
+            verificarNota("blue", fogoFlags, "blue");
         }
     });
 }

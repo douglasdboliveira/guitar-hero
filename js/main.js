@@ -9,7 +9,7 @@ const image = document.getElementById("fogo");
 const volumeControl = document.getElementById("volumeControl");
 const volumeValue = document.getElementById("volumeValue");
 
-const fogoFlags = { verde: false, vermelho: false, amarelo: false };
+const fogoFlags = { green: false, red: false, yellow: false, azul: false };
 const xLinha = 50;
 const divisao = 60;
 

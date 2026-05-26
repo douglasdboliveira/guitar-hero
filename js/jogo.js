@@ -28,9 +28,10 @@ export function desenharNotas(ctx, c, image, fogoFlags, xLinha, divisao) {
         }
     }
 
-    if (fogoFlags.verde) ctx.drawImage(image, 22, 680, 60, 60);
-    if (fogoFlags.vermelho) ctx.drawImage(image, 80, 680, 60, 60);
-    if (fogoFlags.amarelo) ctx.drawImage(image, 140, 680, 60, 60);
+    if (fogoFlags.green) ctx.drawImage(image, 22, 680, 60, 60);
+    if (fogoFlags.red) ctx.drawImage(image, 80, 680, 60, 60);
+    if (fogoFlags.yellow) ctx.drawImage(image, 140, 680, 60, 60);
+    if (fogoFlags.blue) ctx.drawImage(image, 200, 680, 60, 60);
 
     requestAnimationFrame(() => desenharNotas(ctx, c, image, fogoFlags, xLinha, divisao));
 }

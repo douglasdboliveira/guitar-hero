@@ -72,12 +72,16 @@ export function avisar(ctx) {
     ctx.fillText("2: Hino de São Vicente", 170, 310);
 
     ctx.fillStyle = "#ffe600";
-    ctx.fillText("MÉDIO", 170, 420);
+    ctx.fillText("MÉDIO", 170, 370);
     ctx.fillText("3: Raul Seixas - Meu Amigo Pedro", 170, 400);
 
     ctx.fillStyle = "#ff3131";
     ctx.fillText("DIFÍCIL", 170, 460);
     ctx.fillText("4: Shake It Off - Taylor Swift", 170, 490);
     ctx.fillText("5: Slow Ride - Foghat", 170, 520);
+
+    ctx.fillStyle = "#00ff41";
+    ctx.fillText("BADASS", 170, 580);
+    ctx.fillText("6: All That I Can Take - Justin Bieber", 170, 610);
     ctx.shadowBlur = 5;
 }
